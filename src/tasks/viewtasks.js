@@ -16,7 +16,7 @@ function globalupdatestate(val){
 function deletetask(val){
    
     axios
-    .post('http://127.0.0.1:3000/api/v1/task/delete/'+this.state.userId+'/'+this.state.listId+'/'+val+'/'+this.state.authToken)
+    .post('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/task/delete/'+this.state.userId+'/'+this.state.listId+'/'+val+'/'+this.state.authToken)
     .then(response => {
         alert("Deleted Successfully")
         console.log(response)
@@ -58,7 +58,7 @@ class View_tasks extends React.Component{
 
         console.log("this is taskid:"+taskid)
         axios
-        .get('http://127.0.0.1:3000/api/v1/task/one/'+this.state.userId+'/'+this.state.listId+'/'+taskid+'/'+this.state.authToken)
+        .get('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/task/one/'+this.state.userId+'/'+this.state.listId+'/'+taskid+'/'+this.state.authToken)
         .then(response =>{
             //this.setState({taskcontent:})
             console.log("Entered single task data ")
@@ -77,7 +77,7 @@ class View_tasks extends React.Component{
     componentDidMount(){
        
         axios
-        .get('http://127.0.0.1:3000/api/v1/task/view/'+this.state.userId+'/'+this.state.listId+'/'+this.state.authToken)
+        .get('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/task/view/'+this.state.userId+'/'+this.state.listId+'/'+this.state.authToken)
         .then(response =>{
             console.log("this is views response")
             console.log(response)
@@ -100,7 +100,7 @@ class View_tasks extends React.Component{
              task:this.state.taskcontent
          }
         axios
-        .put('http://127.0.0.1:3000/api/v1/task/edit/'+this.state.userId+'/'+this.state.listId+'/'+this.state.taskid+'/'+this.state.authToken,data)
+        .put('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/task/edit/'+this.state.userId+'/'+this.state.listId+'/'+this.state.taskid+'/'+this.state.authToken,data)
         .then(response => {
             console.log("This is edited response:")
             console.log(response)
@@ -117,7 +117,7 @@ class View_tasks extends React.Component{
 
     handlesubmit(e){
         e.preventDefault();
-        axios.post('http://127.0.0.1:3000/api/v1/tasks/create/'+this.state.userId+'/'+this.state.listId+'/'+this.state.authToken,this.state)
+        axios.post('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/tasks/create/'+this.state.userId+'/'+this.state.listId+'/'+this.state.authToken,this.state)
         .then(response =>{ 
           
             console.log(response)

@@ -19,7 +19,7 @@ function update(data) {
  function Deletelist(data)
     {
     axios
-    .post('http://127.0.0.1:3000/api/v1/lists/delete/'+data.listId+'/'+this.props.logineddata.data.data.authToken)
+    .post('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/lists/delete/'+data.listId+'/'+this.props.logineddata.data.data.authToken)
     .then(response => {
         alert("Deleted Successfully")
         console.log(response)
@@ -41,7 +41,7 @@ function update(data) {
         //console.log(this.props.logined.data)
         console.log(this.props.logineddata.data.data.userDetails.userId)
         axios
-            .get('http://127.0.0.1:3000/api/v1/lists/all/' + this.props.logineddata.data.data.userDetails.userId + '/' + this.props.logineddata.data.data.authToken)
+            .get('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/lists/all/' + this.props.logineddata.data.data.userDetails.userId + '/' + this.props.logineddata.data.data.authToken)
             .then(response => {
                 console.log(response.data)
                 this.setState({ data: response.data })
@@ -128,7 +128,7 @@ class Lists extends React.Component {
         //console.log(this.props.logined.data)
         console.log(this.props.logineddata.data.data.userDetails.userId)
         axios
-            .get('http://127.0.0.1:3000/api/v1/lists/all/' + this.props.logineddata.data.data.userDetails.userId + '/' + this.props.logineddata.data.data.authToken)
+            .get('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/lists/all/' + this.props.logineddata.data.data.userDetails.userId + '/' + this.props.logineddata.data.data.authToken)
             .then(response => {
                 console.log(response.data)
                 this.setState({ data: response.data })

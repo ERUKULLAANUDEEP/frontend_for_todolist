@@ -48,7 +48,7 @@ class Login extends React.Component{
       }
       e.preventDefault()
       axios
-      .post('http://127.0.0.1:3000/api/v1/users/login',logindata)
+      .post('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/users/login',logindata)
       .then(response =>{
         this.state.data=response.data;
         console.log("from props"+this.state.data.message)  

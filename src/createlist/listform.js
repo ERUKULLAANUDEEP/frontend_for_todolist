@@ -41,7 +41,7 @@ getsinglelistdata(){
     this.setState({"listId":this.props.listId})
     this.setState({"userId":this.props.logineddata.data.data.userDetails.userId})
     axios
-    .get('http://127.0.0.1:3000/api/v1/list/'+this.props.logineddata.data.data.userDetails.userId+'/'+this.props.listId +'/'+this.props.logineddata.data.data.authToken)
+    .get('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/list/'+this.props.logineddata.data.data.userDetails.userId+'/'+this.props.listId +'/'+this.props.logineddata.data.data.authToken)
      .then(response => {
          console.log(response)
 
@@ -80,7 +80,7 @@ updateformstate(val){
       //  alert(this.props.logindata.data.data.userDetails.userId)
         this.setState({userId:this.props.logineddata.data.data.userDetails.userId})
         axios
-        .post('http://127.0.0.1:3000/api/v1/lists/create/'+this.props.logineddata.data.data.userDetails.userId+'/'+this.props.logineddata.data.data.authToken,this.state)
+        .post('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/lists/create/'+this.props.logineddata.data.data.userDetails.userId+'/'+this.props.logineddata.data.data.authToken,this.state)
         .then(response=>{
          console.log(response)
          alert("Posted the list")
@@ -98,7 +98,7 @@ updateformstate(val){
 
       //  alert(this.props.logindata.data.data.userDetails.userId)
         axios
-        .put('http://127.0.0.1:3000/api/v1/lists/edit/'+this.props.logineddata.data.data.userDetails.userId+'/'+this.props.listId+'/' +this.props.logineddata.data.data.authToken,this.state)
+        .put('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/lists/edit/'+this.props.logineddata.data.data.userDetails.userId+'/'+this.props.listId+'/' +this.props.logineddata.data.data.authToken,this.state)
         .then(response=>{
          console.log(response)
          alert("edited the list")
