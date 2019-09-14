@@ -31,7 +31,7 @@ class Login extends React.Component{
    
     e.preventDefault()
     axios
-    .post('http://127.0.0.1:3000/api/v1/users/signup',this.state)
+    .post('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/users/signup',this.state)
     .then(response =>{
       alert("success")
     })
