@@ -153,12 +153,7 @@ updateformstate(val){
                                     <label>Description</label>
                                     <textarea name="description" value={this.state.description} className="form-control" rows="3" onChange={this.ChangeHandler}     required></textarea>
                                 </div>
-                                <div className="form-group">
-                                    <label>Priority</label>
-                                    <select  name="selectedPriority" className="form-control"  required>
-                                        <option>this</option>
-                                    </select>
-                                </div>
+           
                              <button  className="btn btn-success" onClick={ this.props.edit   ? this.editsubmit : this.Fetching_CreateList }  >Post the List</button>
             
                             </form>
@@ -168,8 +163,7 @@ updateformstate(val){
                     </div>
             
                 </div>
-                <h1>{this.state.title}{this.state.description}</h1>
-            </body>
+                        </body>
             
             </html>
         )

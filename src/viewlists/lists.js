@@ -13,7 +13,7 @@ function update(data) {
     Updatestate({ "tasks": true })
     Updatestate({ "lists": false })
     return (
-        <div></div>
+        <div> </div>
     )
 }
  function Deletelist(data)
@@ -23,7 +23,7 @@ function update(data) {
     .then(response => {
         alert("Deleted Successfully")
         console.log(response)
-        updatedelete();
+        this.updatedelete();
     })
     .catch(error => {
         alert("error")
@@ -36,26 +36,6 @@ function update(data) {
   
     }
     
-   function updatedelete() {
-        console.log('entered viewing lists')
-        //console.log(this.props.logined.data)
-        console.log(this.props.logineddata.data.data.userDetails.userId)
-        axios
-            .get('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/lists/all/' + this.props.logineddata.data.data.userDetails.userId + '/' + this.props.logineddata.data.data.authToken)
-            .then(response => {
-                console.log(response.data)
-                this.setState({ data: response.data })
-                let actualdata;
-                actualdata = (this.state.data).map((cd) => <this.ListCard key={cd.listId} data={cd} authToken={this.props.logineddata.data.data.authToken} call={this.componentDidMount}/>)
-                this.setState({ carddata: actualdata })
-                console.log('response got')
-                this.componentDidMount();
-
-            })
-            .catch(error => { console.log('error') })
-    
-        }
-       
    function tochangestate(val){
 
     console.log("entered in change state")
@@ -73,15 +53,18 @@ class Lists extends React.Component {
             userdata: {},
             carddata: undefined
         }
-        //this.logindata=this.logindata.bind(this)
+          
+  //this.logindata=this.logindata.bind(this)
         // this.check=this.check.bind(this)
         console.log(this.props)
         tochangestate=tochangestate.bind(this)
         Deletelist=Deletelist.bind(this);
-        updatedelete=updatedelete.bind(this);
-    }
-    logindata() {
-        //    this.setState({userdata:this.props.datalog})
+        this.updatethis=this.updatethis.bind(this);
+         this.updatedelete=this.updatedelete.bind(this);         
+ }
+    updatethis(data) {
+      
+         this.setState(data)
     }
     ListCard(props) {
 
@@ -121,10 +104,9 @@ class Lists extends React.Component {
             </div>
         )
     }
-
-
-    componentDidMount() {
-        console.log('entered viewing lists')
+    
+updatedelete(){
+         console.log('entered viewing lists')
         //console.log(this.props.logined.data)
         console.log(this.props.logineddata.data.data.userDetails.userId)
         axios
@@ -133,9 +115,26 @@ class Lists extends React.Component {
                 console.log(response.data)
                 this.setState({ data: response.data })
                 let actualdata;
-                actualdata = (this.state.data).map((cd) => <this.ListCard key={cd.listId} data={cd} authToken={this.props.logineddata.data.data.authToken} call={this.componentDidMount}/>)
-                this.setState({ carddata: actualdata })
+                actualdata = (this.state.data).map((cd) => <this.ListCard key={cd.listId} data={cd} authToken={this.props.logineddata.data.data.authToken}/>)
+                        this.setState({ carddata: actualdata })
                 console.log('response got')
+               })
+                .catch(error =>{console.log('error')})
+
+}
+
+    componentDidMount() {
+        console.log('entered component didmount lists')
+        //console.log(this.props.logined.data)
+        console.log('auth'+this.props.logineddata.data.data.authToken)
+        axios
+            .get('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/lists/all/' + this.props.logineddata.data.data.userDetails.userId + '/' + this.props.logineddata.data.data.authToken)
+            .then(response => {
+                console.log(response.data)
+                const  actualdata = (response.data).map((cd) => <this.ListCard key={cd.listId} data={cd} authToken={this.props.logineddata.data.data.authToken} />)
+                this.updatethis({ carddata: actualdata })
+                                
+console.log('response got:'+this.state.carddate)
 
             })
             .catch(error => { console.log('error') })

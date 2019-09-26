@@ -51,8 +51,8 @@ class Login extends React.Component{
     constructor(props){
       super(props);
       this.state={ 
-        loginemail:"abcd@gmail.com",
-        loginpassword:"123456",
+        loginemail:"",
+        loginpassword:"",
         firstName:"",
         lastName:"",
         email:"",
@@ -74,7 +74,7 @@ class Login extends React.Component{
      
       e.preventDefault()
       axios
-      .post('http://127.0.0.1:3000/api/v1/users/signup',this.state)
+      .post('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/users/signup',this.state)
       .then(response =>{
         alert("success")
       })
@@ -93,9 +93,10 @@ class Login extends React.Component{
           email:this.state.loginemail,
           password:this.state.loginpassword
         }
+        console.log("entered handle login method")
         e.preventDefault()
         axios
-        .post('http://127.0.0.1:3000/api/v1/users/login',logindata)
+        .post('http://ec2-18-218-72-224.us-east-2.compute.amazonaws.com:3000/api/v1/users/login',logindata)
         .then(response =>{
           this.setState({data:response})
           Updatestate({logindata:this.state.data})

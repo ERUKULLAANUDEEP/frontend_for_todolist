@@ -11,6 +11,9 @@ function globalupdatestate(val){
                }
                );
     this.GetsingleTask(val);
+return (
+<div> </div>
+)
     
 }
 function deletetask(val){
@@ -68,8 +71,7 @@ class View_tasks extends React.Component{
             console.log("above is single task response")
         })
         .catch(error =>{
-            alert("Error")
-            console.log(error)
+                        console.log(error)
         })
    
 
@@ -86,8 +88,7 @@ class View_tasks extends React.Component{
            this.setState({alltasks:fulldata})
         })
         .catch(error =>{
-            alert("Error")
-            console.log(error)
+           console.log(error)
         })
 
     }
